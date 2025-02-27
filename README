@@ -1,3 +1,39 @@
 Cron Setup Instructions
-Set Up Your Virtual Environment
-Create a Python virtual environment and install the required dependencies (e.g., google-generativeai) in it. For example:
+------------------------
+1. Set Up Your Virtual Environment:
+    Create a Python virtual environment and install the required dependencies (e.g., google-generativeai) in it.
+    For example:
+
+        cd ~
+        python3 -m venv myenv       # Replace 'myenv' with your desired venv name
+        source myenv/bin/activate
+        pip install google-generativeai
+
+2. Edit Root’s Crontab:
+   Since the script writes to /etc/motd, it needs to run with root privileges. Edit root's crontab by running:
+
+        sudo crontab -e
+
+   At the top of the file, add any required environment variables (optional) and your cron entry.
+   For example, if you want the script to run every day at 11 AM PST, add:
+
+        # Set timezone to Pacific Time
+        TZ=America/Los_Angeles
+
+        # Run the script at 11 AM PST daily.
+        0 11 * * * /home/your_username/myenv/bin/python /home/your_username/path/to/verses.py >> /var/log/verses.log 2>&1
+
+   Notes:
+
+   Replace /home/your_username/myenv/bin/python with the full path to your virtual environment's Python interpreter.
+   Replace /home/your_username/path/to/verses.py with the full path to the script.
+   The output is redirected to /var/log/verses.log for logging; you can change or remove this as needed.
+
+3. Ensure Cron Is Running:
+   Verify that the cron daemon is active:
+
+        sudo systemctl status cron
+
+
+
+
