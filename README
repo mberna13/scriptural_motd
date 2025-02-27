@@ -21,11 +21,13 @@ Cron Setup Instructions
         TZ=America/Los_Angeles
 
         # Run the script at 11 AM PST daily.
-        0 11 * * * /home/your_username/myenv/bin/python /home/your_username/path/to/verses.py >> /var/log/verses.log 2>&1
+        0 11 * * * /home/your_username/myenv/bin/python /home/your_username/path/to/verses.py >>
+         /var/log/verses.log 2>&1
 
    Notes:
 
-   Replace /home/your_username/myenv/bin/python with the full path to your virtual environment's Python interpreter.
+   Replace /home/your_username/myenv/bin/python with the full path to your virtual environment's Python
+    interpreter.
    Replace /home/your_username/path/to/verses.py with the full path to the script.
    The output is redirected to /var/log/verses.log for logging; you can change or remove this as needed.
 
