@@ -1,0 +1,3 @@
+Cron Setup Instructions
+Set Up Your Virtual Environment
+Create a Python virtual environment and install the required dependencies (e.g., google-generativeai) in it. For example:
